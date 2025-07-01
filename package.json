@@ -1,0 +1,36 @@
+{
+  "name": "mealmingle",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asmita72941/MealMingle.git"
+  },
+  "keywords": [
+    "html",
+    "tailwind",
+    "css",
+    "js",
+    "react"
+  ],
+  "author": "Asmita",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asmita72941/MealMingle/issues"
+  },
+  "homepage": "https://github.com/Asmita72941/MealMingle#readme",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.15.4"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.11"
+  }
+}
