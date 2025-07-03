@@ -1,12 +1,19 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState,useEffect } from "react";
+import Carousel from "./Carousel";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
 
+    const [listOfCarousels, setListOfCarousels] = useState([]);
+
     useEffect(()=>{
         fetchData();
     },[]);
+
+    useEffect(()=>{
+        fetchCarousels();
+    },[])
 
     const fetchData = async () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&collection=83667");
@@ -18,13 +25,43 @@ const Body = () => {
         setListOfRestaurant(restaurants);
     }
 
+    const fetchCarousels = async () => {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&collection=83667");
+
+        const json = await data.json();
+
+        const carousels = json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info;
+
+        setListOfCarousels(carousels);
+    }
+
     return(
         <div>
+
+            <div className="flex">
+
+                <div className="m-3 px-7 pt-7">
+                    <button className="px-4 py-2 bg-gray-200 rounded-b-lg"
+                        onClick={()=>{
+                            const filteredList = listOfRestaurants.filter(res => res?.info?.avgRatingString > 4.4);
+                            setListOfRestaurant(filteredList);
+                    }}>Top Rated Restaurants</button>
+                </div>
+
+            </div>
+
+            <div className="flex">
+                {
+                    listOfCarousels.slice(0,11).map(cor => <Carousel key={cor.id} resCor={cor}/>)
+                }
+            </div>
+
             <div className="res-container flex flex-wrap">
                 {
                     listOfRestaurants.map(restaurant => <RestaurantCard key={restaurant?.info?.id} resData={restaurant}/>)
                 }
             </div>
+
         </div>
     )
 }
