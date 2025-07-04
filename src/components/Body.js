@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState,useEffect } from "react";
 import Carousel from "./Carousel";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -35,7 +36,8 @@ const Body = () => {
         setListOfCarousels(carousels);
     }
 
-    return(
+
+    return listOfRestaurants.length === 0 ? <Shimmer/> :(
         <div>
 
             <div className="flex">
