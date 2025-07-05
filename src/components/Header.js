@@ -1,6 +1,8 @@
 import { LOGO_URL } from "../utils/constants";
+import { useState } from "react";
 
 const Header = () => {
+
     return(
         <div className="header flex justify-between bg-green-200 shadow-lg">
 

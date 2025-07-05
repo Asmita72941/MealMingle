@@ -3,13 +3,19 @@
   -- Nav-Items
 
 # Body
+
   # RestaurantContainer
     -- Fetches and holds the list of restaurants from Swiggy API
-    -- Includes a filter button 
-    -- Also displays carousel images 
+    -- Fetches carousel banners
+    -- Search bar 
+    -- Filter button
+
   # RestaurantCard
     # Image
     # Name of Restaurant
     -- Star Rating
     -- Cuisine
     -- Delivery time
+
+  # Shimmer UI
+    -- Placeholder loading cards shown until data loads

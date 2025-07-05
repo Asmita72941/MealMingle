@@ -5,8 +5,12 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
+    // copy of listOfRestaurants
+    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
     const [listOfCarousels, setListOfCarousels] = useState([]);
+
+    const [searchText, setSearchText] = useState("");
 
     useEffect(()=>{
         fetchData();
@@ -24,6 +28,7 @@ const Body = () => {
         const restaurants = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
         setListOfRestaurant(restaurants);
+        setFilteredRestaurant(restaurants);
     }
 
     const fetchCarousels = async () => {
@@ -42,11 +47,26 @@ const Body = () => {
 
             <div className="flex">
 
+                <div className="m-3 p-3">
+
+                    <input type="text" className="search-box border-black" value={searchText} onChange={(e)=>{
+                        setSearchText(e.target.value);
+                    }}/>
+
+                    <button className="px-4 py-2 bg-green-100 rounded-b-lg m-4" onClick={()=>{
+                        // filter the restaurant cards and update the UI
+                        console.log(searchText);
+                        const filteredRes = listOfRestaurants.filter(res => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                        setFilteredRestaurant(filteredRes);
+                    }}>Search</button>
+
+                </div>
+
                 <div className="m-3 px-7 pt-7">
                     <button className="px-4 py-2 bg-gray-200 rounded-b-lg"
                         onClick={()=>{
                             const filteredList = listOfRestaurants.filter(res => res?.info?.avgRatingString > 4.4);
-                            setListOfRestaurant(filteredList);
+                            setFilteredRestaurant(filteredList);
                     }}>Top Rated Restaurants</button>
                 </div>
 
@@ -60,11 +80,11 @@ const Body = () => {
 
             <div className="res-container flex flex-wrap">
                 {
-                    listOfRestaurants.map(restaurant => <RestaurantCard key={restaurant?.info?.id} resData={restaurant}/>)
-                }
+                    filteredRestaurant.map(restaurant => <RestaurantCard key={restaurant?.info?.id} resData={restaurant}/>)
+                }   
             </div>
 
-        </div>
+        </div> 
     )
 }
 
