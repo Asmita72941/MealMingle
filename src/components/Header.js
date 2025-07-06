@@ -1,5 +1,6 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
+import { Link } from "react-router";
 
 const Header = () => {
 
@@ -13,14 +14,20 @@ const Header = () => {
 
             <div className="flex">
                 <ul className="flex m-5 p-5 text-lg">
-                    <li className="mx-9">Home</li>
-                    <li className="mx-9">About</li>
-                    <li className="mx-9">Contact</li>
+                    <li className="mx-9">
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li className="mx-9">
+                        <Link to="/about">About</Link>
+                    </li>
+                    <li className="mx-9">
+                        <Link to="/contact">Contact</Link>
+                    </li>
                     <li className="mx-9">Cart</li>
                 </ul>
             </div>
 
-        </div>
+        </div> 
     )
 }
 

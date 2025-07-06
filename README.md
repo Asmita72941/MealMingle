@@ -19,3 +19,13 @@
 
   # Shimmer UI
     -- Placeholder loading cards shown until data loads
+
+  # About 
+    -- About us Page
+
+  # Contact
+    -- Contact information page
+
+  # Error
+    -- Fallback page for invalid routes
+

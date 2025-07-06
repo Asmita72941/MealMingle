@@ -39,6 +39,7 @@ const Body = () => {
         const carousels = json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info;
 
         setListOfCarousels(carousels);
+
     }
 
 
@@ -55,7 +56,6 @@ const Body = () => {
 
                     <button className="px-4 py-2 bg-green-100 rounded-b-lg m-4" onClick={()=>{
                         // filter the restaurant cards and update the UI
-                        console.log(searchText);
                         const filteredRes = listOfRestaurants.filter(res => res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurant(filteredRes);
                     }}>Search</button>
