@@ -8,7 +8,7 @@ const Header = () => {
         <div className="header flex justify-between bg-green-200 shadow-lg">
 
             <div>
-                <img className="w-28 "
+                <img className="w-28 " 
                     src={LOGO_URL}/>
             </div>
 
