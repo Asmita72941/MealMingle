@@ -3,13 +3,14 @@ import { useState,useEffect } from "react";
 import Carousel from "./Carousel";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
+import useCarousels from "../utils/useCarousels";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
     // copy of listOfRestaurants
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
-    const [listOfCarousels, setListOfCarousels] = useState([]);
+    const listOfCarousels = useCarousels();
 
     const [searchText, setSearchText] = useState("");
 
@@ -17,9 +18,6 @@ const Body = () => {
         fetchData();
     },[]);
 
-    useEffect(()=>{
-        fetchCarousels();
-    },[])
 
     const fetchData = async () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&collection=83667");
@@ -32,19 +30,12 @@ const Body = () => {
         setFilteredRestaurant(restaurants);
     }
 
-    const fetchCarousels = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&collection=83667");
-
-        const json = await data.json();
-
-        const carousels = json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info;
-
-        setListOfCarousels(carousels);
-
+    if(listOfRestaurants.length == 0){
+        return <Shimmer/>
     }
 
 
-    return listOfRestaurants.length === 0 ? <Shimmer/> :(
+    return(
         <div>
 
             <div className="flex">
