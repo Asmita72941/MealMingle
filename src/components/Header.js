@@ -1,7 +1,9 @@
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
+    const onlineStatus = useOnlineStatus();
 
     return(
         <div className="header flex justify-between bg-green-200 shadow-lg">
@@ -13,15 +15,22 @@ const Header = () => {
 
             <div className="flex">
                 <ul className="flex m-5 p-5 text-lg">
+                    <li>
+                        Online Status {onlineStatus ? "💚": "❤️"}
+                    </li>
+
                     <li className="mx-9">
                         <Link to="/">Home</Link>
                     </li>
+
                     <li className="mx-9">
                         <Link to="/about">About</Link>
                     </li>
+
                     <li className="mx-9">
                         <Link to="/contact">Contact</Link>
                     </li>
+
                     <li className="mx-9">Cart</li>
                 </ul>
             </div>

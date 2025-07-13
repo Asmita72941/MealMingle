@@ -29,3 +29,7 @@
   # Error
     -- Fallback page for invalid routes
 
+  # OfflinePage
+    -- Show when the user goes offline
+    -- Full-screen friendly UI with retry button and clear messaging
+

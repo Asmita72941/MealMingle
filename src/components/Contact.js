@@ -1,13 +1,3 @@
-// const Contact = () => {
-//     return(
-//         <div>
-//             <h1>Contact Us Page</h1>
-//         </div>
-//     )
-// }
-
-// export default Contact;
-
 import React, { useState } from 'react';
 
 const Contact = () => {
@@ -82,3 +72,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

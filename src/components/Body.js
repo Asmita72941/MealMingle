@@ -4,6 +4,8 @@ import Carousel from "./Carousel";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router";
 import useCarousels from "../utils/useCarousels";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import OfflinePage from "./OfflinePage";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -30,10 +32,15 @@ const Body = () => {
         setFilteredRestaurant(restaurants);
     }
 
+    const onlineStatus = useOnlineStatus();
+
+    if(onlineStatus === false){
+        return <OfflinePage/>
+    }
+
     if(listOfRestaurants.length == 0){
         return <Shimmer/>
     }
-
 
     return(
         <div>
