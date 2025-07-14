@@ -16,6 +16,8 @@
     -- Star Rating
     -- Cuisine
     -- Delivery time
+    -- Cost for Two
+
 
   # Shimmer UI
     -- Placeholder loading cards shown until data loads
@@ -32,4 +34,4 @@
   # OfflinePage
     -- Show when the user goes offline
     -- Full-screen friendly UI with retry button and clear messaging
-
+  

@@ -6,6 +6,7 @@ import { Link } from "react-router";
 import useCarousels from "../utils/useCarousels";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import OfflinePage from "./OfflinePage";
+import { withPromotedLabel } from "./RestaurantCard";
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState([]);
@@ -15,6 +16,8 @@ const Body = () => {
     const listOfCarousels = useCarousels();
 
     const [searchText, setSearchText] = useState("");
+
+    const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
     useEffect(()=>{
         fetchData();
@@ -79,8 +82,11 @@ const Body = () => {
 
             <div className="res-container flex flex-wrap">
                 {
-                    filteredRestaurant.map(restaurant => <Link key={restaurant?.info?.id} to={"/restaurants/"+restaurant?.info?.id}>
-                    <RestaurantCard  resData={restaurant}/></Link>)
+                    filteredRestaurant.map(restaurant => <Link key={restaurant?.info?.id} to={"/restaurants/"+restaurant?.info?.id}> 
+
+                    {restaurant?.info?.avgRatingString >= 4.5 ? <PromotedRestaurantCard resData={restaurant}/> : <RestaurantCard resData={restaurant}/>}
+
+                    </Link>)
                 }   
             </div>
 
