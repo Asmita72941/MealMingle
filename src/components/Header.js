@@ -1,9 +1,14 @@
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const onlineStatus = useOnlineStatus();
+
+    // Subscribing to the store using Selector 
+    const cartItems =  useSelector((store) => store.cart.items);
+    console.log(cartItems);
 
     return(
         <div className="header flex justify-between bg-green-200 shadow-lg">
@@ -31,7 +36,7 @@ const Header = () => {
                         <Link to="/contact">Contact</Link>
                     </li>
 
-                    <li className="mx-9">Cart</li>
+                    <li className="mx-9 font-bold text-xl">Cart -({cartItems.length} items)</li>
                 </ul>
             </div>
 

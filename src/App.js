@@ -7,13 +7,17 @@ import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import Error from "./components/Error.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore.js";
 
 const AppLayout = () => {
     return(
-        <div>
-            <Header/>
-            <Outlet/> 
-        </div>
+        <Provider store={appStore}>
+            <div>
+                <Header/>
+                <Outlet/> 
+            </div>
+        </Provider>
     )
 }
 

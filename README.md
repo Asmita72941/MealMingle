@@ -34,4 +34,11 @@
   # OfflinePage
     -- Show when the user goes offline
     -- Full-screen friendly UI with retry button and clear messaging
+
+  # Redux Toolkit
+    -- Install @reduxjs/tookit and react-redux 
+    -- Build our store
+    -- Connect our store to our app
+    -- Create a cart Slice to add items in the cart
+    -- Dispatch an action
   
