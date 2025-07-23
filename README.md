@@ -1,20 +1,21 @@
 # Header
   -- Logo
-  -- Nav-Items
+  -- Navigation Items ('Home', 'About', 'Contact', 'Cart')
+  -- Online/Offline status indicator
 
 # Body
 
   # RestaurantContainer
     -- Fetches and holds the list of restaurants from Swiggy API
     -- Fetches carousel banners
-    -- Search bar 
-    -- Filter button
+    -- Search bar to filter restaurants by name
+    -- Filter button for sorting by top-rated restaurant
 
   # RestaurantCard
-    # Image
-    # Name of Restaurant
+    -- Image
+    -- Name of Restaurant
     -- Star Rating
-    -- Cuisine
+    -- Cuisines
     -- Delivery time
     -- Cost for Two
 
@@ -37,8 +38,11 @@
 
   # Redux Toolkit
     -- Install @reduxjs/tookit and react-redux 
-    -- Build our store
-    -- Connect our store to our app
-    -- Create a cart Slice to add items in the cart
-    -- Dispatch an action
+    -- Build a centralized Redux store
+    -- Created a **cart slice** with:
+      -- 'addItem' action - add a food item to cart
+      -- 'clearCart' action - remove all items from cart
+    -- Connected the Redux store to the app using 'Provider'
+    -- Subscribed to cart state using 'useSelector'
+    -- Dispatched cart actions using 'useDispatch'
   

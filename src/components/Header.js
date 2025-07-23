@@ -36,7 +36,9 @@ const Header = () => {
                         <Link to="/contact">Contact</Link>
                     </li>
 
-                    <li className="mx-9 font-bold text-xl">Cart -({cartItems.length} items)</li>
+                    <li className="mx-9 font-bold text-xl">
+                        <Link to="/cart">Cart -({cartItems.length} items)</Link>
+                    </li>
                 </ul>
             </div>
 
