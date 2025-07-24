@@ -6,9 +6,7 @@ import { useSelector } from "react-redux";
 const Header = () => {
     const onlineStatus = useOnlineStatus();
 
-    // Subscribing to the store using Selector 
     const cartItems =  useSelector((store) => store.cart.items);
-    console.log(cartItems);
 
     return(
         <div className="header flex justify-between bg-green-200 shadow-lg">
